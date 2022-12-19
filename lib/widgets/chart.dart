@@ -20,12 +20,14 @@ class Chart extends StatelessWidget {
         }
       }
 
-      return {'day': DateFormat.E(weekDay), 'amount': 9.99};
+      return {'day': DateFormat.E().format(weekDay), 'amount': 9.99};
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    print(groupedTransactionValues);
+
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
