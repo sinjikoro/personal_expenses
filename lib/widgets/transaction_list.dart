@@ -4,8 +4,10 @@ import 'package:intl/intl.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
+  final Function deleteTx;
 
-  const TransactionList({Key? key, required this.transactions})
+  const TransactionList(
+      {Key? key, required this.transactions, required this.deleteTx})
       : super(key: key);
 
   @override
@@ -46,40 +48,14 @@ class TransactionList extends StatelessWidget {
                     ),
                     subtitle: Text(
                         DateFormat.yMMMd().format(transactions[index].date)),
-                  )
-
-                      // Row(children: <Widget>[
-                      //   Container(
-                      //     margin: const EdgeInsets.symmetric(
-                      //       vertical: 10,
-                      //       horizontal: 15,
-                      //     ),
-                      //     decoration: BoxDecoration(
-                      //         border: Border.all(
-                      //             color: Theme.of(context).primaryColor,
-                      //             width: 2)),
-                      //     padding: const EdgeInsets.all(10),
-                      //     child: Text(
-                      //       '\$${transactions[index].amount.toStringAsFixed(2)}',
-                      //       style: Theme.of(context).textTheme.titleMedium,
-                      //     ),
-                      //   ),
-                      //   Column(
-                      //     crossAxisAlignment: CrossAxisAlignment.start,
-                      //     children: <Widget>[
-                      //       Text(
-                      //         transactions[index].title,
-                      //         style: Theme.of(context).textTheme.titleMedium,
-                      //       ),
-                      //       Text(
-                      //         DateFormat.yMMMd().format(transactions[index].date),
-                      //         style:
-                      //             TextStyle(color: Theme.of(context).shadowColor),
-                      //       ),
-                      //     ],
-                      //   )
-                      // ]),
-                      );
+                    trailing: IconButton(
+                      icon: const Icon(
+                        Icons.delete,
+                      ),
+                      color: Theme.of(context).errorColor,
+                      onPressed: () => deleteTx(transactions[index].id),
+                    ),
+                  ));
                 }));
   }
 }
