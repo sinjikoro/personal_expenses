@@ -13,7 +13,8 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 450, //デバイスにあったheight取得を次セッションで行う
+        height: MediaQuery.of(context).size.height *
+            0.6, //デバイスにあったheight取得を次セッションで行う
         child: transactions.isEmpty
             ? Column(children: [
                 Text(
