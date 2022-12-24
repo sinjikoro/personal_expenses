@@ -19,9 +19,7 @@ class ChartBar extends StatelessWidget {
                 child: Text('\$${spendingAmount.toStringAsFixed(0)}'),
               ),
             ),
-            SizedBox(
-              height: constraints.maxHeight * 0.05,
-            ),
+            SizedBox(height: constraints.maxHeight * 0.05),
             SizedBox(
               height: constraints.maxHeight * 0.6,
               width: 10,
@@ -47,7 +45,9 @@ class ChartBar extends StatelessWidget {
               ),
             ),
             SizedBox(height: constraints.maxHeight * 0.05),
-            SizedBox(height: constraints.maxHeight * 0.15, child: Text(label)),
+            SizedBox(
+                height: constraints.maxHeight * 0.15,
+                child: FittedBox(child: Text(label))),
           ],
         );
       }),
